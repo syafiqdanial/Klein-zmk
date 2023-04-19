@@ -121,7 +121,7 @@ behaviors {
 &kp Q          &kp W          &kp E          &kp R          &kp T               &kp Y          &kp U          &kp I          &kp O          &kp P
 &hm LGUI A     &hm LALT S     &hm LCTRL D    &kp F          &kp G               &kp H          &kp J          &hm RCTRL K    &hm RALT L     &hm LGUI SQT
 &kp Z          &kp X          &kp C          &kp V          &kp B               &lt 2 N        &kp M          &kp COMMA      &kp DOT        &kp FSLH
-&kp ESC        &lt 2 TAB      &lt 1 SPACE    &kp CAPS                                          &none     &hm RSHFT BSPC &kp ENTER      &kp SEMI
+&kp ESC        &lt 2 TAB      &lt 1 SPACE    &kp CAPS                                          &none          &hm RSHFT BSPC &kp ENTER      &kp SEMI
             >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
@@ -151,10 +151,10 @@ behaviors {
         btfc_layer {
             
             bindings = <
-&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4        &none          &none          &none          &none          &none 
+&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4        &none          &none          &none          &bt BT_CLR     &none 
 &none          &kp F4         &kp F5         &kp F6         &kp C_PREV          &none          &kp LSHFT      &kp LCTRL      &kp LALT       &kp LGUI
 &none          &kp F1         &kp F2         &kp F3         &none               &none          &none          &none          &none          &none 
-&none          &none          &none          &reset                                            &bootloader    &none          &none          &none 
+&reset         &none          &none          &none                                             &none          &none          &none          &bootloader 
             >;
         sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
