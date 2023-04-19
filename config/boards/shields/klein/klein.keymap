@@ -18,38 +18,73 @@
 #define MEDIA  5
 #define BLU 6
 
-&mt {
-  quick-tap-ms = <100>;
-  global-quick-tap;
-  flavor = "tap-preferred";
-  tapping-term-ms = <180>;
-};
+/ {
 
-&roundbkt {
-  label= "round_brackets";
-  compatible = "zmk,behavior-macro";
-  #binding-cells = <0>;
-  bindings
-      = <&macro_tap &kp LPAR &kp RPAR>;
-};
+behaviors {
 
-&squarebkt {
-  label= "square_brackets";
-  compatible = "zmk,behavior-macro";
-  #binding-cells = <0>;
-  bindings
-      = <&macro_tap &kp LBKT &kp RBKT>;
-};
+      macros {
+         roundbkt: round_brackets {
+            label= "round_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR>;
+         };
+         
+         
+         squarebkt: square_brackets {
+            label= "square_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBKT &kp RBKT>;
+         };
+         
+         
+         curlbkt: curl_brackets {
+            label= "curl_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBRC &kp RBRC>;
+         };
+        
+         apostrophe: apostrophe {
+            label= "apostrophe";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp DQT &kp DQT>;
+         };
+      };
+    
+      hm: homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS";
+        #binding-cells = <2>;
+        tapping_term_ms = <150>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+    };
+    
+      te: tab_enter {
+        compatible = "zmk,behavior-hold-tap";
+        label = "TAB_ENTER";
+        #binding-cells = <2>;
+        tapping_term_ms = <50>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+    };
+    
+    td_mt_enter_tab_f2_f4: tap_dance_mod_tap_tab_esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_MOD_TAP_enter_tab_f2_f4";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&te TAB ENTER>, <&kp F2>, <&kp F4>;
+        };
 
-&curlbkt {
-  label= "curl_brackets";
-  compatible = "zmk,behavior-macro";
-  #binding-cells = <0>;
-  bindings
-      = <&macro_tap &kp LBRC &kp RBRC>;
-};
-
-&combos {
+    combos {
     compatible = "zmk,combos";
     combo_layer3 {
             timeout-ms = <50>;
@@ -58,15 +93,16 @@
        };
     combo_layer4 {
             timeout-ms = <50>;
-            key-positions = <0 9 32 33>;
+            key-positions = <0 9 32 35>;
             bindings = <&tog 4>;
        };
     combo_layer1 {
             timeout-ms = <50>;
-            key-positions = <4 5 32 33>;
+            key-positions = <4 5 32 35>;
             bindings = <&tog 0>;
        };
 
+    };
 };
 
 / {
@@ -82,8 +118,8 @@
 
             bindings = <
 &kp Q          &kp W          &kp E          &kp R          &kp T               &kp Y          &kp U          &kp I          &kp O          &kp P
-&mt LGUI A     &mt LALT S     &mt LCTRL D    &kp F          &kp G               &kp H          &kp J          &mt RCTRL K    &mt RALT L     &mt LGUI SQT
-&kp Z          &kp X          &kp C          &kp V          &kp B               &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
+&hm LGUI A     &hm LALT S     &hm LCTRL D    &kp F          &kp G               &kp H          &kp J          &hm RCTRL K    &hm RALT L     &hm LGUI SQT
+&kp Z          &kp X          &kp C          &kp V          &kp B               &lt 2 N        &kp M          &kp COMMA      &kp DOT        &kp FSLH
 &kp ESC        &lt 2 TAB      &lt 1 SPACE    &bootloader                                       &kp K_MUTE     &mt RSHFT BSPC &kp SEMI       &kp ENTER
             >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
