@@ -18,37 +18,36 @@
 #define MEDIA  5
 #define BLU 6
 
-behaviors {
-          mt {
-            quick-tap-ms = <100>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            tapping-term-ms = <180>;
-          };
-          
-          roundbkt {
-            label= "round_brackets";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LPAR &kp RPAR>;
-          };
+&mt {
+  quick-tap-ms = <100>;
+  global-quick-tap;
+  flavor = "tap-preferred";
+  tapping-term-ms = <180>;
+};
 
-          squarebkt {
-            label= "square_brackets";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LBKT &kp RBKT>;
-          };
+roundbkt {
+  label= "round_brackets";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+      = <&macro_tap &kp LPAR &kp RPAR>;
+};
 
-          curlbkt {
-            label= "curl_brackets";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LBRC &kp RBRC>;
-          };
+squarebkt {
+  label= "square_brackets";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+      = <&macro_tap &kp LBKT &kp RBKT>;
+};
+
+curlbkt {
+  label= "curl_brackets";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+      = <&macro_tap &kp LBRC &kp RBRC>;
+};
 
 combos {
     compatible = "zmk,combos";
@@ -68,7 +67,6 @@ combos {
             bindings = <&tog 0>;
        };
 
-    };
 };
 
 / {
