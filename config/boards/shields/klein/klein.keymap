@@ -12,17 +12,63 @@
 
 #define BASE 0
 #define NAV  1
-#define NUM  2
-#define FUN  3
-#define SYM  4
+#define SYM  2
+#define BTC  3
+#define NON  4
 #define MEDIA  5
 #define BLU 6
 
-&mt {
-  quick-tap-ms = <100>;
-  global-quick-tap;
-  flavor = "tap-preferred";
-  tapping-term-ms = <180>;
+behaviors {
+          mt {
+            quick-tap-ms = <100>;
+            global-quick-tap;
+            flavor = "tap-preferred";
+            tapping-term-ms = <180>;
+          };
+          
+          roundbkt {
+            label= "round_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR>;
+          };
+
+          squarebkt {
+            label= "square_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBKT &kp RBKT>;
+          };
+
+          curlbkt {
+            label= "curl_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBRC &kp RBRC>;
+          };
+
+combos {
+    compatible = "zmk,combos";
+    combo_layer3 {
+            timeout-ms = <50>;
+            key-positions = <32 33>;
+            bindings = <&mo 3>;
+       };
+    combo_layer4 {
+            timeout-ms = <50>;
+            key-positions = <0 9 32 33>;
+            bindings = <&tog 4>;
+       };
+    combo_layer1 {
+            timeout-ms = <50>;
+            key-positions = <4 5 32 33>;
+            bindings = <&tog 0>;
+       };
+
+    };
 };
 
 / {
@@ -31,49 +77,27 @@
 
         default_layer {
 //          ------------------------------------------------------------------------------------------------------------
-//          |  Q  |  W  |  E   |  R   |  T   |                                           |  Y   |  U    |  I    |  O   |   P   |
-//          |  A  |  S  |  D   |  F   |  G   |                                           |  H   |  J    |  K    |  L   |   '   |
-//          |  Z  |  X  |  C   |  V   |  B   |                                           |  N   |  M    |  ,    |  .   |   /   |
-//                      | ESC  | SPC |  TAB | BOOTLOADER |                         | MUTE | RET | BKSP | DEL |
+//          |  Q  |  W  |  E   |  R       |  T   |                                           |  Y   |  U    |  I    |  O   |   P   |
+//          |  A  |  S  |  D   |  F       |  G   |                                           |  H   |  J    |  K    |  L   |   '   |
+//          |  Z  |  X  |  C   |  V       |  B   |                                           |  N   |  M    |  ,    |  .   |   /   |
+//                      | ESC  | lyr2/TAB |  TAB | BOOTLOADER |                         | MUTE | RET | BKSP | DEL |
 
             bindings = <
 &kp Q          &kp W          &kp E          &kp R          &kp T               &kp Y          &kp U          &kp I          &kp O          &kp P
-&mt LGUI A     &mt LALT S     &mt LCTRL D    &mt LSHFT F    &kp G               &kp H          &mt RSHFT J    &mt RCTRL K    &mt RALT L     &mt LGUI SQT
+&mt LGUI A     &mt LALT S     &mt LCTRL D    &kp F          &kp G               &kp H          &kp J          &mt RCTRL K    &mt RALT L     &mt LGUI SQT
 &kp Z          &kp X          &kp C          &kp V          &kp B               &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-&lt MEDIA ESC  &lt NAV SPACE  &lt BLU TAB    &bootloader                                       &kp K_MUTE     &lt SYM RET    &lt NUM BKSP   &lt FUN DEL
+&kp ESC        &lt 2 TAB      &lt 1 SPACE    &bootloader                                       &kp K_MUTE     &mt RSHFT BSPC &kp SEMI       &kp ENTER
             >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
-        nav_layer {
+        navnum_layer {
 
             bindings = <
-&trans         &trans         &trans         &trans         &trans              &kp CAPSLOCK   &bt BT_CLR     &kp K_CUT      &kp K_COPY     &kp K_PASTE
-&kp LGUI       &kp LALT       &kp LCTRL      &kp LSHFT      &trans              &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &trans
-&trans         &trans         &trans         &trans         &trans              &kp INSERT     &kp HOME       &kp PG_UP      &kp PG_DN      &kp END
-&trans         &trans         &trans         &bootloader                                       &bt BT_NXT     &kp RET        &kp BKSP       &kp DEL
-            >;
-        sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
-        };
-
-        num_layer {
-            
-            bindings = <
-&kp LBKT       &kp N7         &kp N8         &kp N9         &kp RBKT            &trans         &trans         &trans         &trans         &trans
-&kp SEMI       &kp N4         &kp N5         &kp N6         &kp EQUAL           &trans         &kp LSHFT      &kp LCTRL      &kp LALT       &kp LGUI
-&kp GRAVE      &kp N1         &kp N2         &kp N3         &kp BSLH            &trans         &trans         &trans         &trans         &trans
-&kp PERIOD     &kp N0         &kp MINUS      &bootloader                                       &bootloader    &trans         &trans         &trans
-            >;
-        sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
-        };
-
-        fun_layer {
-            
-            bindings = <
-&kp F12        &kp F7         &kp F8         &kp F9         &kp PSCRN           &trans         &trans         &trans         &trans         &trans
-&kp F11        &kp F4         &kp F5         &kp F6         &kp SYSREQ          &trans         &kp LSHFT      &kp LCTRL      &kp LALT       &kp LGUI
-&kp F10        &kp F1         &kp F2         &kp F3         &kp PAUSE_BREAK     &trans         &trans         &trans         &trans         &trans
-&kp ESC        &kp SPACE      &kp TAB        &bootloader                                       &bootloader    &trans         &trans         &trans
+&kp KP_PLUS     &kp N1         &kp N2         &kp N3         &kp LPAR            &kp RPAR       &kp CAPS       &kp UP         &kp KP_NUMLOCK &kp HOME
+&kp KP_MINUS    &kp N4         &kp N5         &kp N6         &kp EQUAL           &kp PG_UP      &kp LEFT       &kp DOWN       &kp RIGHT      &kp END
+&kp KP_MULTIPLY &kp N7         &kp N8         &kp N9         &kp DOT             &kp PG_DN      &none          &none          &none          &kp BSLH
+&kp KP_DIVIDE   &kp N0         &trans         &bootloader                                       &bt BT_NXT     &kp BSPC       &kp DEL        &kp ENTER
             >;
         sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
@@ -81,10 +105,32 @@
         sym_layer {
             
             bindings = <
-&kp LS(LBKT)   &kp LS(N7)     &kp LS(N8)     &kp LS(N9)     &kp LS(RBKT)        &trans         &trans         &trans         &trans         &trans
-&kp LS(SEMI)   &kp LS(N4)     &kp LS(N5)     &kp LS(N6)     &kp LS(EQUAL)       &trans         &kp LSHFT      &kp LCTRL      &kp LALT       &kp LGUI
-&kp LS(GRAVE)  &kp LS(N1)     &kp LS(N2)     &kp LS(N3)     &kp LS(BSLH)        &trans         &trans         &trans         &trans         &trans
-&kp LS(PERIOD) &kp LS(N0)     &kp LS(MINUS)  &bootloader                                       &bootloader    &trans         &trans         &trans
+&roundbkt      &squarebkt     &curlbkt       &kp GRAVE      &kp TILDE           &none          &kp F1         &kp F2         &kp F3         &kp F4
+&kp EXCL       &kp AT         &kp HASH       &kp DOLLAR     &kp PIPE            &none          &kp F5         &kp F6         &kp F7         &kp F8
+&kp PRCNT      &kp CARET      &kp AMPERSAND  &kp BACKSLASH  &kp UNDERSCORE      &none          &kp F9         &kp F10        &kp F11        &kp F12
+&none          &none          &none          &none                                             &none          &none          &none          &none
+            >;
+        sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        btfc_layer {
+            
+            bindings = <
+&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4        &none          &none          &none          &none          &none 
+&none          &kp F4         &kp F5         &kp F6         &kp C_PREV          &none          &kp LSHFT      &kp LCTRL      &kp LALT       &kp LGUI
+&none          &kp F1         &kp F2         &kp F3         &none               &none          &none          &none          &none          &none 
+&none          &none          &none          &reset                                            &bootloader    &none          &none          &none 
+            >;
+        sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        empty_layer {
+            
+            bindings = <
+&none       &none       &none       &none       &none              &none       &none       &none       &none       &none
+&none       &none       &none       &none       &none              &none       &none       &none       &none       &none
+&none       &none       &none       &none       &none              &none       &none       &none       &none       &none
+&none       &none       &none       &none                                      &none       &none       &none       &none
             >;
         sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
