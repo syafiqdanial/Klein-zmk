@@ -88,7 +88,7 @@ behaviors {
     compatible = "zmk,combos";
     combo_layer3 {
             timeout-ms = <50>;
-            key-positions = <32 33>;
+            key-positions = <32 35>;
             bindings = <&mo 3>;
        };
     combo_layer4 {
