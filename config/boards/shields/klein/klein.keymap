@@ -121,7 +121,7 @@ behaviors {
 &kp Q          &kp W          &kp E          &kp R          &kp T               &kp Y          &kp U          &kp I          &kp O          &kp P
 &hm LGUI A     &hm LALT S     &hm LCTRL D    &kp F          &kp G               &kp H          &kp J          &hm RCTRL K    &hm RALT L     &hm LGUI SQT
 &kp Z          &kp X          &kp C          &kp V          &kp B               &lt 2 N        &kp M          &kp COMMA      &kp DOT        &kp FSLH
-&hm RSHFT ESC  &lt 2 TAB      &lt 1 SPACE    &kp CAPS                                          &none          &hm RSHFT BSPC &kp ENTER      &kp SEMI
+&lt 2 TAB      &lt 1 SPACE    &hm RSHFT ESC  &kp CAPS                                          &tog 4         &kp ENTER      &hm RSHFT BSPC &kp SEMI
             >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
@@ -165,7 +165,7 @@ behaviors {
 &none       &none       &none       &none       &none              &none       &none       &none       &none       &none
 &none       &none       &none       &none       &none              &none       &none       &none       &none       &none
 &none       &none       &none       &none       &none              &none       &none       &none       &none       &none
-&none       &none       &none       &none                                      &none       &none       &none       &none
+&none       &none       &none       &none                                      &tog 0      &none       &none       &none
             >;
         sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
