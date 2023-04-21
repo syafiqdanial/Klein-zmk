@@ -120,8 +120,8 @@ behaviors {
             bindings = <
 &kp Q          &kp W          &kp E          &kp R          &kp T               &kp Y          &kp U          &kp I          &kp O          &kp P
 &hm LGUI A     &hm LALT S     &hm LCTRL D    &hm LSHFT F    &kp G               &kp H          &hm RSHFT J    &hm RCTRL K    &hm RALT L     &hm LGUI SQT
-&kp Z          &kp X          &kp C          &kp V          &kp B               &lt 2 N        &kp M          &kp COMMA      &kp DOT        &kp FSLH
-&hm RSHFT ESC  &lt 2 TAB      &lt 1 SPACE    &kp CAPS                                          &kp SEMI       &hm RSHFT BSPC &kp DEL        &kp ENTER
+&kp Z          &kp X          &kp C          &kp V          &kp B               &lt 2 N        &kp M          &kp COMMA      &kp DOT        &hm BSLH FSLH
+&hm RSHFT ESC  &lt 2 TAB      &lt 1 SPACE    &kp CAPS                                          &none          &hm RSHFT BSPC &kp DEL        &hm SEMI ENTER
             >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp LEFT RIGHT>;
         };
