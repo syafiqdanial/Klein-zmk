@@ -91,17 +91,6 @@ behaviors {
             key-positions = <32 35>;
             bindings = <&mo 3>;
        };
-    combo_layer4 {
-            timeout-ms = <50>;
-            key-positions = <0 9 32 35>;
-            bindings = <&tog 4>;
-       };
-    combo_layer1 {
-            timeout-ms = <50>;
-            key-positions = <4 5 32 35>;
-            bindings = <&tog 0>;
-       };
-
     };
   };
 };
