@@ -56,6 +56,30 @@ behaviors {
             bindings
                 = <&macro_tap &kp DQT &kp DQT>;
          };
+        
+         winleft: winleft {
+            label= "winleft";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LGUI &kp LCTRL &kp LEFT>;
+         };
+        
+         winright: winright {
+            label= "winright";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LGUI &kp LCTRL &kp RIGHT>;
+         };
+        
+         taskview: taskview {
+            label= "taskview";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LGUI &kp TAB>;
+         };
       };
     
       hm: homerow_mods {
@@ -120,7 +144,7 @@ behaviors {
             bindings = <
 &kp KP_PLUS     &kp N1         &kp N2         &kp N3         &kp LPAR            &kp RPAR       &kp CAPS       &kp UP         &kp KP_NUMLOCK &kp HOME
 &kp KP_MINUS    &kp N4         &kp N5         &kp N6         &kp N0              &kp EQUAL      &kp LEFT       &kp DOWN       &kp RIGHT      &kp END
-&kp KP_MULTIPLY &kp N7         &kp N8         &kp N9         &kp DOT             &kp KP_DIVIDE  &none          &none          &none          &kp BSLH
+&kp KP_MULTIPLY &kp N7         &kp N8         &kp N9         &kp DOT             &kp KP_DIVIDE  &winleft       &taskview      &winright      &kp BSLH
 &kp ENTER       &none          &trans         &none                                             &none          &kp BSPC       &kp DEL        &kp ENTER
             >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp HOME END>;
