@@ -26,7 +26,7 @@ behaviors {
          roundbkt: round_brackets {
             label= "round_brackets";
             compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            #binding-cells = <0>; 
             bindings
                 = <&macro_tap &kp LPAR &kp RPAR>;
          };
