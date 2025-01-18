@@ -146,7 +146,7 @@ behaviors {
 &kp Z          &kp X          &kp C          &kp V          &kp B               &lt 2 N        &kp M          &kp COMMA      &kp DOT        &hm BSLH FSLH
 &hm RSHFT ESC  &lt 2 TAB      &lt 1 SPACE    &kp CAPS                                          &none          &hm RSHFT BSPC &kp DEL        &hm SEMI ENTER
             >;
-        sensor-bindings = <&inc_dec_kp SCRL_UP SCRL_DOWN &inc_dec_kp SCRL_LEFT SCRL_RIGHT>;
+        sensor-bindings = <&inc_dec_msc SCRL_UP SCRL_DOWN &inc_dec_msc SCRL_LEFT SCRL_RIGHT>;
         };
 
         navnum_layer {
